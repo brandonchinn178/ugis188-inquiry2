@@ -28,5 +28,9 @@ class MainView(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
-        context['version'] = request.session['version']
+
+        version = request.session['version']
+        context['good_design'] = version in [1, 3]
+        context['good_ui'] = version in [3, 4]
+
         return context

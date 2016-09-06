@@ -7,6 +7,10 @@
     <meta property="og:description" content="Brandon Chinn's Inquiry 2 assignment for UGIS 188">
     <meta property="og:image" content="{% static 'img/fb-logo.png' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    {% if good_design %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% endif %}
 </head>
 <body>
     <header>

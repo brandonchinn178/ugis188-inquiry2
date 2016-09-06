@@ -4,3 +4,7 @@ node_modules
 .DS_Store
 .env
 *.sqlite3
+*.css
+*.css.map
+!css/vendor/*.css
+*.log
