@@ -1,0 +1,7 @@
+name: ugis188-inquiry2
+dependencies:
+  - python=2.7
+  - django==1.9.5
+  - boto==2.35.2
+  - pip:
+    - django-storages==1.1.8

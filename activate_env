@@ -1,0 +1,2 @@
+source activate ugis188-inquiry2
+source .env
