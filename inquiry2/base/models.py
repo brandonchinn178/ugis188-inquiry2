@@ -62,3 +62,4 @@ class Survey(models.Model):
     overall_perception = models.PositiveSmallIntegerField()
     professional = models.PositiveSmallIntegerField()
     competence = models.PositiveSmallIntegerField()
+    comments = models.TextField()

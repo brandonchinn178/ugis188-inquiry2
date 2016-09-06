@@ -10,4 +10,4 @@ class SurveyForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SurveyForm, self).__init__(*args, **kwargs)
 
-        # programmatically create form fields
+        # programmatically create meme fields
