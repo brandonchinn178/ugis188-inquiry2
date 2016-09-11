@@ -7,14 +7,16 @@
     <meta property="og:description" content="Brandon Chinn's Inquiry 2 assignment for UGIS 188">
     <meta property="og:image" content="{% static 'img/fb-logo.png' %}">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+    <script src="{% static 'js/vendor/jquery-1.11.2.min.js' %}"></script>
     {% block head %}{% endblock %}
 </head>
 <body>
     <header>
         <h1>Much Meme, Very Survey</h1>
     </header>
-    <div class="content">
+    <form class="content" method="post">
+        {% csrf_token %}
         {% block body %}{% endblock %}
-    </div>
+    </form>
 </body>
 </html>

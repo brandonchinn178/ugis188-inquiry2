@@ -1,7 +1,5 @@
 {% extends "survey-2.html" %}
 
 {% block body %}
-    {% for message in messages %}
-        <p>{{ message }}</p>
-    {% endfor %}
+    {% include "partials/submitted_message.html" %}
 {% endblock %}

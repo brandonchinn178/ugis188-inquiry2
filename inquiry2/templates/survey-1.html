@@ -2,12 +2,93 @@
 {% load staticfiles %}
 
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="{% static 'base-1.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base-1.css' %}">
     {% if good_design %}
-        <link rel="stylesheet" type="text/css" href="{% static 'style-1.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style-1.css' %}">
     {% endif %}
+    <script src="{% static 'js/base-1.js' %}"></script>
 {% endblock %}
 
 {% block body %}
-
+    <div class="page explanation">
+        {% include "partials/explanation.html" %}
+    </div>
+    {% for slug, url in memes %}
+        <div class="page meme">
+            <img src="{% static url %}">
+            <table class="scale">
+                <tr>
+                    <td></td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                </tr>
+                <tr>
+                    <td>Funniness of the joke</td>
+                    <td><input type="radio" name="meme-{{ slug }}-funny" value="1"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-funny" value="2"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-funny" value="3"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-funny" value="4"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-funny" value="5"></td>
+                </tr>
+                <tr>
+                    <td>Joke matches image</td>
+                    <td><input type="radio" name="meme-{{ slug }}-match" value="1"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-match" value="2"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-match" value="3"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-match" value="4"></td>
+                    <td><input type="radio" name="meme-{{ slug }}-match" value="5"></td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+    <div class="page name">
+        <p class="centered">Almost done! Plz fill out these last few fields.</p>
+        <img src="{% static 'img/what-is-name.jpg' %}">
+        {{ form.name }}
+    </div>
+    <div class="page details">
+        <p>Please rate this survey. What was your overall perception of the survey (how professional it seemed, how well you thought it did the job, etc.)? What was your overall satisfaction with the survey?</p>
+        <table class="scale">
+            <tr>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Overall perception</td>
+                <td><input type="radio" name="perception" value="1"></td>
+                <td><input type="radio" name="perception" value="2"></td>
+                <td><input type="radio" name="perception" value="3"></td>
+                <td><input type="radio" name="perception" value="4"></td>
+                <td><input type="radio" name="perception" value="5"></td>
+            </tr>
+            <tr>
+                <td>Satisfaction</td>
+                <td><input type="radio" name="satisfaction" value="1"></td>
+                <td><input type="radio" name="satisfaction" value="2"></td>
+                <td><input type="radio" name="satisfaction" value="3"></td>
+                <td><input type="radio" name="satisfaction" value="4"></td>
+                <td><input type="radio" name="satisfaction" value="5"></td>
+            </tr>
+        </table>
+    </div>
+    <div class="page comments">
+        <p class="centered">Do you have any other comments?</p>
+        {{ form.comments }}
+    </div>
+    <div class="page submitting">
+        <p class="centered">Submitting...</p>
+        <img src="{% static 'img/loading.jpg' %}">
+    </div>
+    <div class="buttons">
+        <button class="prev" type="button">Prev</button>
+        <button class="next" type="button">Next</button>
+    </div>
+    <ul class="messages"></ul>
 {% endblock %}

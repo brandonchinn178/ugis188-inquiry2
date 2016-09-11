@@ -1,19 +1,13 @@
 from django.db import models
 
-import random, json
+import json
 
-# map slug to URL of meme
-MEMES = {
-    'bad-luck-brian': 'http://s2.quickmeme.com/img/1e/1e797a2ea3c4001c7c5d6d08736a0c8ca4c68b497a3f4c93cdf0594130bff486.jpg',
-}
-
-def random_memes():
-    """
-    Returns a list of memes in a random order
-    """
-    memes = MEMES.items()
-    random.shuffle(memes)
-    return memes
+# list of slugs, needs an image at static/img/<slug>.jpg
+MEMES = [
+    'bad-luck-brian',
+    'drunk-baby',
+    'bsian',
+]
 
 class MockSurvey(object):
     """

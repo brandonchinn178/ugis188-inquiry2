@@ -4,7 +4,7 @@ from django.shortcuts import redirect
 import random
 
 from base.forms import SurveyForm
-from base.models import random_memes, MEMES
+from base.models import MEMES
 
 class MainView(FormView):
     """
@@ -29,9 +29,13 @@ class MainView(FormView):
             self.version = random.randint(1, 4)
         request.session['version'] = self.version
 
+        #### DEBUGGING: TAKE OUT IN PROD ####
+        self.version = 1
+        #####################################
+
         # same UIs use same template
-        template_version = (self.version + 1) / 2
-        self.template_name = 'survey-%d.html' % template_version
+        self.template_version = (self.version + 1) / 2
+        self.template_name = 'survey-%d.html' % self.template_version
 
         response = super(MainView, self).dispatch(request, *args, **kwargs)
         response.set_cookie('version', self.version)
@@ -40,7 +44,13 @@ class MainView(FormView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
 
-        context['memes'] = random_memes()
+        # randomize order of memes
+        memes = [
+            (slug, 'img/memes/%s.jpg' % slug)
+            for slug in MEMES
+        ]
+        random.shuffle(memes)
+        context['memes'] = memes
 
         # 1 and 2: 'base-1.css'
         # 3 and 4: 'base-2.css'
@@ -64,11 +74,15 @@ class MainView(FormView):
                 'funny': self.request.POST['meme-%s-funny' % slug],
                 'match': self.request.POST['meme-%s-match' % slug],
             }
-            for slug in MEMES.keys()
+            for slug in MEMES
         }
         form.save(self.version, data)
         self.request.session['submitted'] = True
         return redirect('submitted')
+
+    def form_invalid(self, form):
+        print form.errors.as_data()
+        raise Exception('Survey had errors: see console for more details.')
 
 class SubmittedView(TemplateView):
     """
@@ -83,12 +97,4 @@ class SubmittedView(TemplateView):
         template_version = (self.version + 1) / 2
         self.template_name = 'submitted-%d.html' % template_version
 
-    def get_context_data(self, **kwargs):
-        context = super(SubmittedView, self).get_context_data(**kwargs)
-
-        context['messages'] = [
-            'Your survey has been successfully submitted!',
-            'Thank you for your participation.',
-        ]
-
-        return context
+        return super(SubmittedView, self).dispatch(request, *args, **kwargs)
