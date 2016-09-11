@@ -17,7 +17,8 @@ class MockSurvey(object):
         if data is None:
             self.data = {
                 meme: {
-                    'score': None,
+                    'funny': None,
+                    'relevance': None,
                 }
                 for meme in MEMES.keys()
             }
@@ -59,7 +60,11 @@ class Survey(models.Model):
     mock_survey = MockSurveyField()
 
     # survey questions
-    overall_perception = models.PositiveSmallIntegerField()
-    professional = models.PositiveSmallIntegerField()
-    competence = models.PositiveSmallIntegerField()
+    name = models.CharField(max_length=255)
+    perception = models.PositiveSmallIntegerField()
+    satisfaction = models.PositiveSmallIntegerField()
     comments = models.TextField()
+
+    # logistics
+    version = models.PositiveSmallIntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True)

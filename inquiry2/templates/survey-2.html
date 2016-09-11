@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base-2.css' %}">
+    {% if good_design %}
+        <link rel="stylesheet" type="text/css" href="{% static 'style-2.css' %}">
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+
+{% endblock %}
