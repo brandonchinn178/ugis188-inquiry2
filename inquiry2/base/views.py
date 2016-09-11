@@ -1,9 +1,10 @@
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.shortcuts import redirect
 
 import random
 
 from base.forms import SurveyForm
+from base.models import random_memes, MEMES
 
 class MainView(FormView):
     """
@@ -17,6 +18,12 @@ class MainView(FormView):
         Try to get the version from the session, falling back on the cookie
         if the session has expired. Sets the session and cookie afterwards.
         """
+        # never let a user resubmit a form, to prevent against multiple people
+        # filling out a survey on one computer and unproportionally increasing
+        # the number of survey responses for that design
+        if request.session.get('submitted'):
+            return redirect('submitted')
+
         self.version = request.session.get('version', request.COOKIES.get('version'))
         if self.version is None:
             self.version = random.randint(1, 4)
@@ -33,6 +40,8 @@ class MainView(FormView):
     def get_context_data(self, **kwargs):
         context = super(MainView, self).get_context_data(**kwargs)
 
+        context['memes'] = random_memes()
+
         # 1 and 2: 'base-1.css'
         # 3 and 4: 'base-2.css'
         context['base_style'] = 'base-%d.css' % self.template_version
@@ -46,7 +55,19 @@ class MainView(FormView):
         return context
 
     def form_valid(self, form):
-        form.save(self.version)
+        """
+        Parse out mock survey data and save the MockSurvey object. Each meme's data
+        comes in the keys "meme-<slug>-funny" and "meme-<slug>-match".
+        """
+        data = {
+            slug: {
+                'funny': self.request.POST['meme-%s-funny' % slug],
+                'match': self.request.POST['meme-%s-match' % slug],
+            }
+            for slug in MEMES.keys()
+        }
+        form.save(self.version, data)
+        self.request.session['submitted'] = True
         return redirect('submitted')
 
 class SubmittedView(TemplateView):
