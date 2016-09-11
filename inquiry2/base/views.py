@@ -29,9 +29,10 @@ class MainView(FormView):
             self.version = random.randint(1, 4)
         request.session['version'] = self.version
 
-        #### DEBUGGING: TAKE OUT IN PROD ####
-        self.version = 1
-        #####################################
+        #### DEBUGGING: TAKE OUT LATER ####
+        if 'version' in kwargs:
+            self.version = int(kwargs['version'])
+        ###################################
 
         # same UIs use same template
         self.template_version = (self.version + 1) / 2

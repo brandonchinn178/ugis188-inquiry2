@@ -1,0 +1,14 @@
+Development
+-----------
+- validate in js
+- debug form submission
+- check if easy to extract data after (make admin page that just shows json of all data?)
+- style bad ui
+- template good ui
+- style good ui
+
+Production
+----------
+- remove all debugging code (urls.py, views.py)
+- deploy to heroku
+- set environment variables (IS_HEROKU, DISABLE_COLLECTSTATIC, .env vars)
