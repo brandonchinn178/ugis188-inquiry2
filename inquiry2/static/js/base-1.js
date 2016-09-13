@@ -2,6 +2,7 @@ var REQUIRED_MESSAGE = "Y U NO ANSWER QUESTION??";
 
 $(document).ready(function() {
     $(".buttons .prev").click(function() {
+        $(".messages").empty();
         var page = $(".page:visible").hide();
 
         if (page.hasClass("comments")) {

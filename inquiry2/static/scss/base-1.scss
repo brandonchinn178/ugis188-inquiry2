@@ -1,4 +1,6 @@
-html, body, h1, h2, h3, p, input, ul, li {
+@import "vars";
+
+html, body, h1, h2, h3, p, input, ul, li, form {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
@@ -6,9 +8,7 @@ html, body, h1, h2, h3, p, input, ul, li {
 }
 
 body {
-    width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
+    min-width: $width;
 }
 
 p {
@@ -45,6 +45,12 @@ header {
         margin: 0;
         font-size: 48px;
     }
+}
+
+.content {
+    width: $width;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 .page {
