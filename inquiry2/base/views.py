@@ -1,10 +1,11 @@
 from django.views.generic import FormView, TemplateView
 from django.shortcuts import redirect
+from django.http.response import JsonResponse
 
-import random
+import random, os
 
 from base.forms import SurveyForm
-from base.models import MEMES
+from base.models import MEMES, Survey
 
 class MainView(FormView):
     """
@@ -102,3 +103,19 @@ class SubmittedView(TemplateView):
         self.template_name = 'submitted-%d.html' % template_version
 
         return super(SubmittedView, self).dispatch(request, *args, **kwargs)
+
+class DataView(TemplateView):
+    """
+    The view to download the JSON file with all the survey data.
+    """
+    template_name = 'data.html'
+
+    def post(self, request, *args, **kwargs):
+        password = request.POST.get('password')
+        if password == os.environ['ADMIN_PASSWORD']:
+            return JsonResponse([
+                survey.serialize()
+                for survey in Survey.objects.all()
+            ], safe=False)
+        else:
+            return redirect('data')

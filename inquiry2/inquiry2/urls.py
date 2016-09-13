@@ -20,6 +20,7 @@ from base.views import *
 urlpatterns = [
     url(r'^$', MainView.as_view(), name='home'),
     url(r'^submitted/$', SubmittedView.as_view(), name='submitted'),
+    url(r'^data/$', DataView.as_view(), name='data'),
 
     #### DEBUGGING: TAKE OUT LATER ####
     url(r'^(?P<version>\d)/$', MainView.as_view()),

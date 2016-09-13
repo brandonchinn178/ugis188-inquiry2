@@ -2,7 +2,7 @@ Development
 -----------
 x validate in js
 x debug form submission
-- check if easy to extract data after (make admin page that just shows json of all data?)
+x check if easy to extract data after (make admin page that just shows json of all data?)
 - style bad ui
 - template good ui
 - style good ui
