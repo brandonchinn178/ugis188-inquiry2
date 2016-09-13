@@ -22,7 +22,10 @@ class MainView(FormView):
         # filling out a survey on one computer and unproportionally increasing
         # the number of survey responses for that design
         if request.session.get('submitted'):
-            return redirect('submitted')
+            #### DEBUGGING: TAKE OUT LATER ####
+            pass
+            ###################################
+            # return redirect('submitted')
 
         self.version = request.session.get('version', request.COOKIES.get('version'))
         if self.version is None:
@@ -72,8 +75,8 @@ class MainView(FormView):
         """
         data = {
             slug: {
-                'funny': self.request.POST['meme-%s-funny' % slug],
-                'match': self.request.POST['meme-%s-match' % slug],
+                'funny': int(self.request.POST['meme-%s-funny' % slug]),
+                'match': int(self.request.POST['meme-%s-match' % slug]),
             }
             for slug in MEMES
         }

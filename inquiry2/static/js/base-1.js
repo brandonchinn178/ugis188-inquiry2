@@ -41,7 +41,7 @@ $(document).ready(function() {
             $(this).text("Submit");
         } else if (nextPage.hasClass("submitting")) {
             $(".buttons").hide();
-            // $("form").submit();
+            $("form").submit();
         }
     });
 });
