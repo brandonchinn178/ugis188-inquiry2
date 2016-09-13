@@ -1,6 +1,6 @@
 Development
 -----------
-- validate in js
+x validate in js
 - debug form submission
 - check if easy to extract data after (make admin page that just shows json of all data?)
 - style bad ui

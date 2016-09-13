@@ -1,37 +1,59 @@
+var REQUIRED_MESSAGE = "Y U NO ANSWER QUESTION??";
+
 $(document).ready(function() {
     $(".buttons .prev").click(function() {
-        var old = $(".page:visible").hide();
+        var page = $(".page:visible").hide();
 
-        if (old.hasClass("comments")) {
+        if (page.hasClass("comments")) {
             $(".buttons .next").text("Next");
         }
 
-        var page = old.prev().show();
+        var nextPage = page.prev().show();
         $(".buttons .next").show();
 
-        if (page.hasClass("explanation")) {
+        if (nextPage.hasClass("explanation")) {
             $(this).hide();
             window.spiritOfTroy.playVideo();
         }
     });
 
     $(".buttons .next").click(function() {
-        // TODO: validation
+        $(".messages").empty();
+        var page = $(".page:visible");
 
-        var old = $(".page:visible").hide();
+        if (!isValid(page)) {
+            $("<li>")
+                .text(REQUIRED_MESSAGE)
+                .appendTo(".messages");
+            return;
+        }
 
-        if (old.hasClass("explanation")) {
+        page.hide();
+
+        if (page.hasClass("explanation")) {
             window.spiritOfTroy.pauseVideo();
         }
 
-        var page = old.next().show();
+        var nextPage = page.next().show();
         $(".buttons .prev").show();
 
-        if (page.hasClass("comments")) {
+        if (nextPage.hasClass("comments")) {
             $(this).text("Submit");
-        } else if (page.hasClass("submitting")) {
+        } else if (nextPage.hasClass("submitting")) {
             $(".buttons").hide();
             // $("form").submit();
         }
     });
 });
+
+/**
+ * Validates each page as the next button is pressed
+ */
+var isValid = function(page) {
+    if (page.hasClass("meme") || page.hasClass("details")) {
+        return page.find("input:checked").length === 2;
+    } else if (page.hasClass("name")) {
+        return page.find("input").val() !== "";
+    }
+    return true;
+};
