@@ -7,8 +7,15 @@ from collections import OrderedDict
 # list of slugs, needs an image at static/img/<slug>.jpg
 MEMES = [
     'bad-luck-brian',
-    # 'drunk-baby',
-    # 'bsian',
+    'drunk-baby',
+    'bsian',
+    'philosoraptor',
+    'keanu-reeves',
+    'girlfriend',
+    'success-kid',
+    'first-world-problems',
+    'willy-wonka',
+    'sudden-clarity',
 ]
 
 class Survey(models.Model):

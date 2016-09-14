@@ -6,7 +6,7 @@ x check if easy to extract data after (make admin page that just shows json of a
 x style bad ui
 x template good ui
 x style good ui
-- add more memes
+x add more memes
 
 Production
 ----------
