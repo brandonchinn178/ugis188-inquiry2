@@ -1,0 +1,152 @@
+@import "vars";
+
+html, body, header, h1, h2, h3, p, input, ul, li, form {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: $width;
+}
+
+h2 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    margin-bottom: 10px;
+    line-height: 1.3em;
+    text-align: left;
+    &.centered {
+        text-align: center;
+    }
+}
+
+button {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    &.active {
+        background: $yellow;
+    }
+}
+
+ul {
+    list-style: none;
+}
+
+input {
+    width: 300px;
+    padding: 2px 5px;
+    font-size: 14px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    padding: 40px 20px;
+    text-align: center;
+    background: $white;
+    z-index: 5;
+    h1 {
+        margin: 0;
+        font-size: 48px;
+    }
+}
+
+.content {
+    width: $width;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: $header-height + 20px;
+}
+
+table.scale {
+    display: inline-block;
+    tr {
+        height: 65px;
+    }
+    td:first-child {
+        font-size: 20px;
+    }
+    button {
+        margin: 0 5px;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.explanation {
+    text-align: center;
+    margin-bottom: 20px;
+    span {
+        font-weight: bold;
+    }
+    .scroll {
+        margin-top: 20px;
+        p {
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        img {
+            height: 20px;
+        }
+    }
+}
+
+.survey {
+    opacity: 0;
+}
+
+.meme {
+    border-bottom: 1px solid lighten($black, 70);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    img {
+        margin-right: 20px;
+        width: 250px;
+        vertical-align: middle;
+    }
+    table {
+        vertical-align: middle;
+        td:first-child {
+            width: 250px;
+        }
+    }
+}
+
+.details {
+    text-align: center;
+    img {
+        display: block;
+        margin: 10px auto;
+    }
+    p {
+        margin-top: 20px;
+    }
+    table td:first-child {
+        width: 200px;
+    }
+}
+
+.buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.messages {
+    text-align: center;
+    margin-top: 20px;
+    li {
+        color: red;
+        font-weight: bold;
+    }
+}
+
+.submitting {
+    display: none;
+    text-align: center;
+}

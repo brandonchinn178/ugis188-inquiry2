@@ -6,7 +6,78 @@
     {% if good_design %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style-2.css' %}">
     {% endif %}
+    <script src="{% static 'js/base-2.js' %}"></script>
 {% endblock %}
 
 {% block body %}
+    <div class="explanation">
+        {% include "partials/explanation.html" %}
+        <div class="scroll">
+            <p>Scroll down</p>
+            <img src="{% static 'img/scroll-down.png' %}">
+        </div>
+    </div>
+    <div class="survey">
+        {% for slug, url in memes %}
+            <div class="meme">
+                <img src="{% static url %}">
+                <input type="hidden" name="meme-{{ slug }}-funny">
+                <input type="hidden" name="meme-{{ slug }}-match">
+                <table class="scale">
+                    <tr>
+                        <td>Funniness of the joke</td>
+                        <td><button type="button" name="meme-{{ slug }}-funny">1</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-funny">2</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-funny">3</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-funny">4</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-funny">5</button></td>
+                    </tr>
+                    <tr>
+                        <td>Joke matches image</td>
+                        <td><button type="button" name="meme-{{ slug }}-match">1</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-match">2</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-match">3</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-match">4</button></td>
+                        <td><button type="button" name="meme-{{ slug }}-match">5</button></td>
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+        <div class="details">
+            <p class="centered">Almost done! Plz fill out these last few fields.</p>
+            <img src="{% static 'img/what-is-name.jpg' %}">
+            {{ form.name }}
+            <p>Please rate this survey (1=low, 5=high). What was your overall perception of the survey (how professional it seemed, how accurate it was in assessing your dankness, etc.)? What was your overall satisfaction with the survey?</p>
+            <input type="hidden" name="perception">
+            <input type="hidden" name="satisfaction">
+            <table class="scale">
+                <tr>
+                    <td>Overall perception</td>
+                    <td><button type="button" name="perception">1</button></td>
+                    <td><button type="button" name="perception">2</button></td>
+                    <td><button type="button" name="perception">3</button></td>
+                    <td><button type="button" name="perception">4</button></td>
+                    <td><button type="button" name="perception">5</button></td>
+                </tr>
+                <tr>
+                    <td>Satisfaction</td>
+                    <td><button type="button" name="satisfaction">1</button></td>
+                    <td><button type="button" name="satisfaction">2</button></td>
+                    <td><button type="button" name="satisfaction">3</button></td>
+                    <td><button type="button" name="satisfaction">4</button></td>
+                    <td><button type="button" name="satisfaction">5</button></td>
+                </tr>
+            </table>
+            <p class="centered">Do you have any other comments?</p>
+            {{ form.comments }}
+        </div>
+        <div class="buttons">
+            <button class="submit">Submit</button>
+        </div>
+        <ul class="messages"></ul>
+    </div>
+    <div class="submitting">
+        <h2>Submitting...</h2>
+        <img src="{% static 'img/loading.jpg' %}">
+    </div>
 {% endblock %}
