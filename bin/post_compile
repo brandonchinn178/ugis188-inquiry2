@@ -9,8 +9,8 @@ function message {
 
 # Automatically migrate when deploying to Heroku
 message "Running Django Migrations"
-python site/manage.py migrate
+python inquiry2/manage.py migrate
 
 message "Compiling staticfiles"
 python bin/compile_staticfiles.py
-python site/manage.py collectstatic --noinput -i *.scss
+python inquiry2/manage.py collectstatic --noinput -i *.scss
