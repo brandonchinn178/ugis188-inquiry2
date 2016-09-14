@@ -114,4 +114,4 @@ STATICFILES_LOCATION = 'static'
 
 if IS_HEROKU:
     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
-    STATICFILES_STORAGE = 'main.custom_storages.StaticStorage'
+    STATICFILES_STORAGE = 'base.custom_storages.StaticStorage'
