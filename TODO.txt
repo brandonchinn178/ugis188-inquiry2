@@ -4,8 +4,8 @@ x validate in js
 x debug form submission
 x check if easy to extract data after (make admin page that just shows json of all data?)
 x style bad ui
-- template good ui
-- style good ui
+x template good ui
+x style good ui
 - add more memes
 
 Production

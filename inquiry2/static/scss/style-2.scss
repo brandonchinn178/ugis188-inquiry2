@@ -1,0 +1,66 @@
+@import "vars";
+
+html, body, h1, h2, h3, ul, li, form {
+    font-family: "Fjalla One", Helvetica, sans-serif;
+}
+
+h2 {
+    color: $blue;
+}
+
+p, input {
+    font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+button {
+    border: 3px solid $blue;
+    border-radius: 2px;
+    background: $blue;
+    padding: 8px 30px 6px;
+    color: $white;
+    font-size: 16px;
+    font-family: "Fjalla One", Helvetica, sans-serif;
+    transition: background 0.5s, color 0.5s;
+    cursor: pointer;
+    text-transform: uppercase;
+    outline: 0;
+    &:hover {
+        background: $white;
+        color: $blue;
+    }
+}
+
+td {
+    font-size: 20px;
+    color: $blue;
+}
+
+header {
+    background: $blue;
+    color: $white;
+    h1 {
+        font-family: "Comic Sans MS", Arial, sans-serif;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+}
+
+table.scale {
+    button {
+        padding: 0;
+        background: $white;
+        color: $blue;
+        &:hover, &.active {
+            background: $blue;
+            color: $white;
+        }
+    }
+}
+
+.details textarea {
+    padding: 5px;
+    width: 400px;
+    height: 8em;
+    font-size: 16px;
+}
