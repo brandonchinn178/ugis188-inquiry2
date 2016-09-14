@@ -23,20 +23,12 @@ class MainView(FormView):
         # filling out a survey on one computer and unproportionally increasing
         # the number of survey responses for that design
         if request.session.get('submitted'):
-            #### DEBUGGING: TAKE OUT LATER ####
-            pass
-            ###################################
-            # return redirect('submitted')
+            return redirect('submitted')
 
         self.version = request.session.get('version', request.COOKIES.get('version'))
         if self.version is None:
             self.version = random.randint(1, 4)
         request.session['version'] = self.version
-
-        #### DEBUGGING: TAKE OUT LATER ####
-        if 'version' in kwargs:
-            self.version = int(kwargs['version'])
-        ###################################
 
         # same UIs use same template
         self.template_version = (self.version + 1) / 2
@@ -90,11 +82,6 @@ class SubmittedView(TemplateView):
             self.version = request.session['version']
         except KeyError:
             return redirect('home')
-
-        #### DEBUGGING: TAKE OUT LATER ####
-        if 'version' in kwargs:
-            self.version = int(kwargs['version'])
-        ###################################
 
         template_version = (self.version + 1) / 2
         self.template_name = 'submitted-%d.html' % template_version

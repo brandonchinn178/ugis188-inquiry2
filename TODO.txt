@@ -10,6 +10,6 @@ x add more memes
 
 Production
 ----------
-- remove all debugging code (urls.py, views.py)
+x remove all debugging code (urls.py, views.py)
 - deploy to heroku
 - set environment variables (IS_HEROKU, DISABLE_COLLECTSTATIC, .env vars)
