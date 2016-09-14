@@ -45,6 +45,13 @@ $(document).ready(function() {
             $("form").submit();
         }
     });
+
+    // don't submit when clicking enter
+    $(".name input").keydown(function(e) {
+        if (e.keyCode === 13) {
+            e.preventDefault();
+        }
+    });
 });
 
 /**

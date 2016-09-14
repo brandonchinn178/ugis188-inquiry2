@@ -1,11 +1,19 @@
 @import "vars";
 
-html, body, h1, h2, h3, p, input, ul, li, form {
+html, body, h1, h2, h3, ul, li, form {
     font-family: "Fjalla One", Helvetica, sans-serif;
 }
 
+h2 {
+    color: $blue;
+}
+
+p, input {
+    font-family: "Open Sans", Helvetica, sans-serif;
+}
+
 button {
-    border: 2px solid $blue;
+    border: 3px solid $blue;
     border-radius: 2px;
     background: $blue;
     padding: 8px 30px 6px;
@@ -22,6 +30,15 @@ button {
     }
 }
 
+input[type=radio] {
+    cursor: pointer;
+}
+
+td {
+    font-size: 20px;
+    color: $blue;
+}
+
 header {
     background: $blue;
     color: $white;
@@ -33,11 +50,17 @@ header {
     }
 }
 
-.explanation {
-    p {
-        font-family: "Open Sans", Helvetica, sans-serif;
-    }
-    h2 {
-        color: $blue;
-    }
+.name input {
+    font-size: 16px;
+}
+
+.comments textarea {
+    padding: 5px;
+    width: 400px;
+    height: 8em;
+    font-size: 16px;
+}
+
+.messages {
+    font-size: 20px;
 }

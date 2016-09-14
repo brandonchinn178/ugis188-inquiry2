@@ -57,14 +57,6 @@ class MainView(FormView):
         random.shuffle(memes)
         context['memes'] = memes
 
-        # 1 and 2: 'base-1.css'
-        # 3 and 4: 'base-2.css'
-        context['base_style'] = 'base-%d.css' % self.template_version
-
-        # 2: 'style-1.css'
-        # 4: 'style-2.css'
-        context['design_style'] = 'style-%d.css' % self.template_version
-
         context['good_design'] = self.version in [2, 4]
 
         return context
@@ -99,10 +91,20 @@ class SubmittedView(TemplateView):
         except KeyError:
             return redirect('home')
 
+        #### DEBUGGING: TAKE OUT LATER ####
+        if 'version' in kwargs:
+            self.version = int(kwargs['version'])
+        ###################################
+
         template_version = (self.version + 1) / 2
         self.template_name = 'submitted-%d.html' % template_version
 
         return super(SubmittedView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(SubmittedView, self).get_context_data(**kwargs)
+        context['good_design'] = self.version in [2, 4]
+        return context
 
 class DataView(TemplateView):
     """

@@ -24,5 +24,6 @@ urlpatterns = [
 
     #### DEBUGGING: TAKE OUT LATER ####
     url(r'^(?P<version>\d)/$', MainView.as_view()),
+    url(r'^submitted/(?P<version>\d)/$', SubmittedView.as_view()),
     ###################################
 ]
