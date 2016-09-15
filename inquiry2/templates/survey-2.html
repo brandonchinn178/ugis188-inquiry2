@@ -46,10 +46,7 @@
             </div>
         {% endfor %}
         <div class="details">
-            <p class="centered">Almost done! Plz fill out these last few fields.</p>
-            <img src="{% static 'img/what-is-name.jpg' %}">
-            {{ form.name }}
-            <p>Please rate this survey (1=low, 5=high). What was your overall perception of the survey (how professional it seemed, how accurate it was in assessing your dankness, etc.)? What was your overall satisfaction with the survey?</p>
+            <p>Almost done! Plz rate this survey (1=low, 5=high). What was your overall perception of the survey (how professional it seemed, how accurate it was in assessing your dankness, etc.)? What was your overall satisfaction with the survey?</p>
             <input type="hidden" name="perception">
             <input type="hidden" name="satisfaction">
             <table class="scale">

@@ -5,7 +5,7 @@ from base.models import Survey
 class SurveyForm(forms.ModelForm):
     class Meta:
         model = Survey
-        fields = ['name', 'perception', 'satisfaction', 'comments']
+        fields = ['perception', 'satisfaction', 'comments']
 
     def save(self, version, mock_survey_data):
         instance = super(SurveyForm, self).save(commit=False)

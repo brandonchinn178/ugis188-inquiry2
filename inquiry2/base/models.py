@@ -23,7 +23,6 @@ class Survey(models.Model):
     mock_survey = models.TextField()
 
     # survey questions
-    name = models.CharField(max_length=255)
     perception = models.PositiveSmallIntegerField()
     satisfaction = models.PositiveSmallIntegerField()
     comments = models.TextField(blank=True)
@@ -47,7 +46,6 @@ class Survey(models.Model):
         timestamp = timezone.localtime(self.timestamp)
 
         return OrderedDict([
-            ('name', self.name),
             ('version', self.version),
             ('perception', self.perception),
             ('satisfaction', self.satisfaction),
