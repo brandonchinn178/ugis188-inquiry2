@@ -108,3 +108,8 @@ class DataView(TemplateView):
             ], safe=False)
         else:
             return redirect('data')
+
+    def get_context_data(self, **kwargs):
+        context = super(DataView, self).get_context_data(**kwargs)
+        context['total'] = Survey.objects.count()
+        return context
