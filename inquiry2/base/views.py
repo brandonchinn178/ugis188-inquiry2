@@ -34,6 +34,9 @@ class MainView(FormView):
         self.template_version = (self.version + 1) / 2
         self.template_name = 'survey-%d.html' % self.template_version
 
+        ### MAKES SURVEY CLOSED
+        self.template_name = 'closed.html'
+
         response = super(MainView, self).dispatch(request, *args, **kwargs)
         response.set_cookie('version', self.version)
         return response
